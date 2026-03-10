@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>River Rush</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @font-face {
+      font-family: 'Pixbob';
+      src: url('./src/assets/font/PIXBOB MINI LITE.otf') format('opentype');
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      background-color: #0a0a14;
+    }
+
+    #game-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Dark letterbox background */
+      background: linear-gradient(135deg, #0a0a14 0%, #1a1a2e 100%);
+    }
+
+    #game-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Allow container to be constrained by JS */
+      width: 100%;
+      height: 100%;
+    }
+
+    #game-container canvas {
+      display: block;
+      /* Smooth rounded corners for mobile-like appearance */
+      border-radius: 12px;
+      /* Subtle shadow for depth */
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+
+    /* Mobile-specific styles */
+    @media (max-width: 768px) and (pointer: coarse) {
+      #game-container canvas {
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Hidden element to force font preloading -->
+  <div style="font-family: 'Pixbob'; position: absolute; visibility: hidden;">.</div>
+
+  <div id="game-wrapper">
+    <div id="game-container"></div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
